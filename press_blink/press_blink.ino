@@ -4,12 +4,9 @@ const int led=13;
 int ledState;
 int remainder;
 int var;
+int varTemp = 0;
 int r;
 
-int ledChange(int input) {
-  if(r=input%2==0) {return 0;}
-  else {return 1;}
-}
 
 void setup() {
   Serial.begin(9600);
@@ -20,22 +17,22 @@ void setup() {
 void loop() {
   var=digitalRead(button);
 
-  if(var==0x1) {
-    do {
-    ledState++;
-    Serial.print("ledState = ");
-    Serial.println(ledState);
-    }
-    while(var==0x1); {delay(1);}
-    }
+  if(var==HIGH) {
+    varTemp = 1;
 
-  remainder=ledChange(ledState);
-  Serial.print("remainder = ");
-  Serial.println(ledState);
-  
-  if(remainder==0) {
-    digitalWrite(led, HIGH);
-  } else {
-    digitalWrite(led, LOW);
-  }     
+    while(var==HIGH) {
+      Serial.print("ledState = ");
+      Serial.println(ledState);
+
+      var=digitalRead(button);
+      delay(1);             //wait until button is pressed
+    } 
+  } else varTemp = 0;
+
+  if (varTemp == 1) ledState++;
+
+  if(r=ledState%2==0) digitalWrite(led, HIGH);
+  else digitalWrite(led, LOW);
+
+  varTemp=0;
 }
