@@ -1,3 +1,9 @@
+//This code is the most basic thing you can do with Arduino: turn on a bunch of leds!
+
+// This code is part of a series of progects on arduino to go from 0 to 255!
+// Written by Erick Ahmed and Esha Ahmed
+// MIT License, 2022
+
 const int green = 13;
 const int blue = 12;
 

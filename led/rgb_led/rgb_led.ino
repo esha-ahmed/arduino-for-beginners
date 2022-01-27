@@ -1,6 +1,6 @@
 // This progect uses a common anode rgb led combined with three potentiometers to generate any of the 16M color the led can physically make
 
-// Code written as a part of a guide for beginners on how to get started with Arduino
+// This code is part of a series of progects on arduino to go from 0 to 255!
 // MIT License, 2022
 
 // TODO: define each pin, they shoulb be all analog pins from A0 to A5
