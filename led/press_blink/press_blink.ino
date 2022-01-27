@@ -1,39 +1,38 @@
-const int button = 8;
-const int blue = 13;
+const int button=8;
+const int led=13;
 
-int counter = 3;
-int counterP = 2;
+int ledState;
+int remainder;
+int var;
+int varTemp = 0;
+int r;
 
-bool currentState = false;
-bool lastState = false;
-bool ledState = false;
 
 void setup() {
   Serial.begin(9600);
-  pinMode(blue, OUTPUT);
+  pinMode(led, OUTPUT);
   pinMode(button, INPUT);
 }
 
 void loop() {
-  lastState = false;
-  currentState = digitalRead(button);
+  var=digitalRead(button);
 
-  pointer
+  if(var==HIGH) {
+    varTemp = 1;
 
-  if(currentState != lastState && currentState == HIGH && counterP %2 == 0) {
-    ledState = true;
-    counter = counter +1;
-  } else if (counterP %2 != 0) {
-    ledState = false;
-    counter = counter + 1;
-    }
-Serial.print("counter");
-  Serial.println(counter);
-Serial.print("pointer");
-Serial.println(counterP);
-  digitalWrite(blue, ledState);
-  delay(350);
+    while(var==HIGH) {
+      Serial.print("ledState = ");
+      Serial.println(ledState);
 
- lastState = currentState;
+      var=digitalRead(button);
+      delay(1);             //wait until button is pressed
+    } 
+  } else varTemp = 0;
+
+  if (varTemp == 1) ledState++;
+
+  if(r=ledState%2==0) digitalWrite(led, HIGH);
+  else digitalWrite(led, LOW);
+
+  varTemp=0;
 }
-  
