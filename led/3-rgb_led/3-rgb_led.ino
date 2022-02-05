@@ -4,7 +4,7 @@
 // MIT License, 2022
 
 // TODO: define each pin, they shoulb be all analog pins from A0 to A5
-int ledR;
+int ledR 4;
 int ledG;
 int ledB;
 
